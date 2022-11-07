@@ -6,7 +6,7 @@ import torch.nn as nn
 import sys
 import preprocess
 
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from torch.serialization import default_restore_location
 
 
@@ -68,6 +68,10 @@ def load_checkpoint(args, model, optimizer):
     checkpoint_path = os.path.join(args.save_dir, args.restore_file)
     if os.path.isfile(checkpoint_path):
         state_dict = torch.load(checkpoint_path, map_location=lambda s, l: default_restore_location(s, 'cpu'))
+        new_state_dict = OrderedDict()
+        for k, v in state_dict.items():
+            name = k[7:] # remove `module.`
+            new_state_dict[name] = v
         model.load_state_dict(state_dict['model'])
         optimizer.load_state_dict(state_dict['optimizer'])
         save_checkpoint.best_loss = state_dict['best_loss']

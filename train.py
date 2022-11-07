@@ -19,7 +19,7 @@ def get_args():
     parser.add_argument('--cuda', action='store_true', help='Use a GPU')
 
     # Add data arguments
-    parser.add_argument('--data', default='indomain/preprocessed_data/', help='path to data directory')
+    parser.add_argument('--data', default='data/en-fr/prepared/', help='path to data directory')
     parser.add_argument('--source-lang', default='fr', help='source language')
     parser.add_argument('--target-lang', default='en', help='target language')
     parser.add_argument('--max-tokens', default=None, type=int, help='maximum number of tokens in a batch')
@@ -38,7 +38,7 @@ def get_args():
 
     # Add checkpoint arguments
     parser.add_argument('--log-file', default=None, help='path to save logs')
-    parser.add_argument('--save-dir', default='checkpoints_asg4', help='path to save checkpoints')
+    parser.add_argument('--save-dir', default='checkpoints_asg3', help='path to save checkpoints')
     parser.add_argument('--restore-file', default='checkpoint_last.pt', help='filename to load checkpoint')
     parser.add_argument('--save-interval', type=int, default=1, help='save a checkpoint every N epochs')
     parser.add_argument('--no-save', action='store_true', help='don\'t save models or checkpoints')
