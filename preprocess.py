@@ -6,6 +6,7 @@ import sys
 import re
 import pickle
 
+# test
 # establish link to seq2seq dir
 # scripts_dir = os.path.dirname(os.path.abspath(__file__))
 # base_dir = os.path.join(scripts_dir, "..")
